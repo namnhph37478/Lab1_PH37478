@@ -61,10 +61,21 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void addProduct() {
-        ProductDTO newProduct = new ProductDTO(0, "New Product", 50.0, 1);
+        // Get the product name from the EditText
+        String productName = editTextProductName.getText().toString().trim();
+
+        // Check if the product name is empty
+        if (productName.isEmpty()) {
+            Toast.makeText(this, "Please enter a product name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ProductDTO newProduct = new ProductDTO(0, productName, 50.0, 1);
         new ProductDAO(this).insert(newProduct);
         products.add(newProduct);
         adapter.notifyDataSetChanged();
+        editTextProductName.setText("");
+        Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
     }
 
     private void updateProduct(ProductDTO product) {
