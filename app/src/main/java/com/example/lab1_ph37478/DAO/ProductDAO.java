@@ -42,4 +42,16 @@ public class ProductDAO {
         cursor.close();
         return products;
     }
+    public int update(ProductDTO product) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", product.getName());
+        values.put("price", product.getPrice());
+        values.put("id_cat", product.getIdCat());
+        return db.update("tb_product", values, "id=?", new String[]{String.valueOf(product.getId())});
+    }
+    public int delete(int id) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        return db.delete("tb_product", "id=?", new String[]{String.valueOf(id)});
+    }
 }
