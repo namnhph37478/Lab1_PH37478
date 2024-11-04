@@ -1,0 +1,30 @@
+SELECT * FROM tb_product;
+SELECT tb_product.*, tb_cat.name as cat_name  FROM tb_product INNER JOIN tb_cat ON tb_product.id_cat = tb_cat.id;
+
+--them san pham
+--INSERT INTO tb_product (name, price, id_cat)  
+--VALUES   
+--    ('Samsung Smart TV', 15000000, 1),  
+--    ('Sony Bravia', 20000000, 1),  
+--    ('LG OLED', 25000000, 1);
+
+--sua sp
+/*UPDATE tb_product  
+SET price = 16000000  
+WHERE name = 'Samsung Smart TV';*/
+
+
+--xoa sp
+/*DELETE FROM tb_product  
+WHERE name IN ('Sony Bravia', 'LG OLED');*/
+
+--Lấy danh sách sản phẩm tivi, có tên thể loại
+--SELECT tb_product.*, tb_cat.name AS cat_name  
+--FROM tb_product  
+--INNER JOIN tb_cat ON tb_product.id_cat = tb_cat.id  
+--WHERE tb_cat.name = 'Tivi';
+
+--câu lệnh in thông tin danh sách sản phẩm tìm được với từ khóa nhập vào trong tên sản phẩm
+/*SELECT *  
+FROM tb_product  
+WHERE name LIKE 'tivi';*/
