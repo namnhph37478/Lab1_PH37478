@@ -7,6 +7,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.lab1_ph37478.Adapter.CategoryAdapter;
+
 import java.util.ArrayList;
 
 public class CategoryActivity extends AppCompatActivity {
@@ -24,13 +27,12 @@ public class CategoryActivity extends AppCompatActivity {
 
         addSampleData();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
+        CategoryAdapter adapter = new CategoryAdapter(this, categories);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Xử lý khi nhấn vào danh mục
                 Intent intent = new Intent(CategoryActivity.this, ProductActivity.class);
                 intent.putExtra("categoryId", position);
                 startActivity(intent);
